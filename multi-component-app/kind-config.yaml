@@ -1,0 +1,11 @@
+apiVersion: kind.x-k8s.io/v1alpha4
+kind: Cluster
+nodes:
+  - role: control-plane
+  - role: worker
+    labels:
+      mongo-data: "true"
+    extraMounts:
+      - hostPath: /workspaces/devops-lab-02/multi-component-app/data
+        containerPath: /mnt/mongo-data
+  - role: worker
